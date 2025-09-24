@@ -28,4 +28,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/rooms/{room}/control', [RoomViewController::class, 'control'])->name('room.control');
 });
 
-// require __DIR__.'/auth.php';
+require __DIR__.'/auth.php';
