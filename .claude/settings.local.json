@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(php artisan make:migration:*)",
+      "Bash(php artisan make:controller:*)",
+      "Bash(php artisan make:model:*)",
+      "Bash(php artisan make:policy:*)",
+      "Bash(php artisan make:test:*)",
+      "Bash(composer:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -41,4 +42,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function participants()
+    {
+        return $this->hasMany(Participant::class);
+    }
+
+    public function uploads()
+    {
+        return $this->hasMany(Upload::class);
+    }
+
+    public function createdSchedules()
+    {
+        return $this->hasMany(Schedule::class, 'created_by');
+    }
 }

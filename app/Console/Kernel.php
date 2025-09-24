@@ -15,7 +15,18 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        // Process scheduled broadcasts every minute
+        $schedule->command('broadcasts:process-scheduled')
+            ->everyMinute()
+            ->withoutOverlapping()
+            ->runInBackground();
+
+        // Clean up old completed schedules weekly
+        $schedule->call(function () {
+            \App\Models\Schedule::where('status', 'completed')
+                ->where('updated_at', '<', now()->subWeeks(2))
+                ->delete();
+        })->weekly();
     }
 
     /**

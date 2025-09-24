@@ -31,4 +31,21 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'livekit' => [
+        'url' => env('LIVEKIT_WS_URL', 'ws://localhost:7880'),
+        'api_key' => env('LIVEKIT_API_KEY'),
+        'api_secret' => env('LIVEKIT_API_SECRET'),
+    ],
+
+    'webrtc' => [
+        'turn' => [
+            'urls' => env('TURN_URLS', env('TURN_SERVER_URL', '')),
+            'username' => env('TURN_USERNAME'),
+            'credential' => env('TURN_CREDENTIAL'),
+        ],
+        'stun' => [
+            'urls' => env('STUN_URLS', 'stun:stun.l.google.com:19302'),
+        ],
+    ],
+
 ];
